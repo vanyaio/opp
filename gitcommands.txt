@@ -1,0 +1,5 @@
+git remote -v - info on remote repo
+git rm --cached README  - make untracked and STAYED ON HARDWARE
+git push origin master
+git rm name.txt -delete and make untracked
+git rm -f name.txt - file was staged and changed, -f must be due to safety
