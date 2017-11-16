@@ -35,6 +35,8 @@
 		<Unit filename="main.cpp" />
 		<Unit filename="mat.h" />
 		<Unit filename="mat_mn.h" />
+		<Unit filename="mat_pol.h" />
+		<Unit filename="pol.h" />
 		<Unit filename="rat.h" />
 		<Unit filename="test_class.h" />
 		<Extensions>

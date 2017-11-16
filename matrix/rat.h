@@ -31,7 +31,7 @@ struct rat
         return ans;
     }
 
-    rat& operator*(const rat& a) const
+    rat operator*(const rat& a) const
     {
         rat ans((p * a.p), (q * a.q));
         return ans;
