@@ -124,7 +124,7 @@ int main()
             m[i] = new pol[n];
             for (int j = 0; j < n; j++)
             {
-                cout << "c" << i << "," << j << ": ";
+                cout << "c" << i + 1 << "," << j + 1 << ": ";
                 int deg;
                 cin >> deg;
                 for (int k = 0; k <= deg; k++)
@@ -183,20 +183,30 @@ int main()
                 }
                 a.pr( i - 1, x);
             }
-            /*
+
             if (c == 'z')
             {
                 int i, j;
                 cin >> i >> j;
                 a.make_zero(i-1, j-1);
             }
-            */
+
             if (c == 'e')
                 return 0;
 
-            a.show()
+            a.show();
             cout << endl << endl;
         }
+    }
+
+    if (mode == 4)
+    {
+        pol a(true);
+        pol b(true);
+
+        cout << "A: "; a.show(); cout << endl;
+        cout << "B: "; b.show(); cout << endl;
+        pol::euclid(a, b);
     }
     return 0;
 }

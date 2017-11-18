@@ -12,7 +12,7 @@ class my_class
     private:
         static int global_class_var;
     public:
-        static void change_static_var();
+        static void change_static_var();//static method can be called without method
         static int get_var();
         static void define_var();
 };

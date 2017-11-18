@@ -30,10 +30,20 @@ struct rat
         rat ans((p * a.q + a.p * q), q * a.q);
         return ans;
     }
-
+    rat operator-(const rat& a) const
+    {
+        rat ans((p * a.q - a.p * q), q * a.q);
+        return ans;
+    }
     rat operator*(const rat& a) const
     {
         rat ans((p * a.p), (q * a.q));
+        return ans;
+    }
+
+    rat operator/(const rat& a) const
+    {
+        rat ans((p * a.q), (q * a.p));
         return ans;
     }
 

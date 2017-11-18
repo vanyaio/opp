@@ -41,11 +41,13 @@ public:
     {
         for (int k = 0; k < n; k++)
             pol::swap(m[k][i], m[k][j]);
+        r = r * rat(-1, 1);
     }
 
     void swap_row(int i, int j)
     {
         std::swap(m[i], m[j]);
+        r = r * rat(-1, 1);
     }
 
     void show()
@@ -55,6 +57,7 @@ public:
         {
             for (int j = 0; j < n; j++)
             {
+                cout << "c" << i + 1 << "," << j + 1 << ": ";
                 m[i][j].show();
                 cout << "  ";
             }
@@ -64,5 +67,17 @@ public:
         r.show();
     }
 
+    void make_zero(int i, int j)
+    {
+        for (int k = 0; k < n; k++)
+        {
+            if (k == i)
+                continue;
+            pol temp;
+            temp = m[k][j];
+            pr(k, m[i][j]);
+            add(k, i, temp * rat(-1 , 1));
+        }
+    }
 };
 #endif // MAT_POL_H

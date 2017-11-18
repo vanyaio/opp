@@ -10,10 +10,6 @@ class pol
 public:
     int deg;
     rat m[mx_deg + 1];
-    rat* a;
-    rat* b;
-    rat* x;
-    rat* y;
 
     void set_deg()
     {
@@ -58,6 +54,15 @@ public:
         return ans;
     }
 
+    pol operator-(const pol& a) const
+    {
+        pol ans;
+        for (int i = 0; i <= mx_deg; i++)
+            ans.m[i] = (m[i] - a.m[i]);
+        ans.set_deg();
+        return ans;
+    }
+
     void show()
     {
         set_deg();
@@ -95,6 +100,14 @@ public:
         return ans;
     }
 
+    pol operator*(const rat& a) const
+    {
+        pol ans;
+        for (int i = 0; i <= mx_deg; i++)
+            ans.m[i] = m[i] * a;
+        ans.set_deg();
+        return ans;
+    }
     void operator=(const pol& a)
     {
         deg = a.deg;
@@ -109,6 +122,58 @@ public:
         temp = a;
         a = b;
         b = temp;
+    }
+
+    rat last_coeff() const
+    {
+        return m[deg];
+    }
+
+    static void get_qr(const pol& as, const pol& b, pol& q, pol& r)
+    {
+        pol a = as;
+        while (a.deg >= b.deg)
+        {
+            q.m[a.deg - b.deg] = a.last_coeff() / b.last_coeff();
+            pol temp_q;
+            temp_q.m[a.deg - b.deg] = q.m[a.deg - b.deg];
+            a = (a - (b * temp_q));
+            a.set_deg();
+        }
+        r = a;
+    }
+
+
+    static void euclid(const pol& as, const pol& bs)
+    {
+        pol a = as;
+        pol b = bs;
+        pol one;
+        one.m[0] = rat(1, 1);
+        pol zero;
+        zero.m[0] = rat(0, 1);
+        pol x[10];
+        pol y[10];
+        x[0] = one;
+        y[0] = zero;
+        x[1] = zero;
+        y[1] = one;
+
+        pol r[10];
+        pol q[10];
+        r[0] = a;
+        r[1] = b;
+
+        for (int i = 1; r[i].deg != -inf;)
+        {
+            get_qr(r[i - 1], r[i], q[i], r[i + 1]);
+            r[i - 1].show(); cout << " = "; r[i].show(); cout << " * ("; q[i].show(); cout << ") + "; r[i + 1].show(); cout << endl;
+            x[i + 1] = (x[i - 1] - (x[i] * q[i]));
+            y[i + 1] = (y[i - 1] - (y[i] * q[i]));
+            cout << "=> "; r[i + 1].show(); cout << " = "; x[i + 1].show(); cout << " "; y[i + 1].show(); cout << endl;
+            r[i + 1].set_deg();
+            ++i;
+        }
     }
     //pol(rat* a, ...)
 };
