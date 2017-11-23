@@ -3,3 +3,13 @@ git rm --cached README  - make untracked and STAYED ON HARDWARE
 git push origin master
 git rm name.txt -delete and make untracked
 git rm -f name.txt - file was staged and changed, -f must be due to safety
+
+Branch:
+git branch name - set a branch
+git checkout name - swithch to name branch
+git log - may see on which branch the HEAD is 
+MERGING
+$ git checkout master
+$ git merge hotfix
+
+
