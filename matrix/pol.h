@@ -166,11 +166,13 @@ public:
 
         for (int i = 1; r[i].deg != -inf;)
         {
+            cout << "step " << i << endl;
             get_qr(r[i - 1], r[i], q[i], r[i + 1]);
             r[i - 1].show(); cout << " = "; r[i].show(); cout << " * ("; q[i].show(); cout << ") + "; r[i + 1].show(); cout << endl;
             x[i + 1] = (x[i - 1] - (x[i] * q[i]));
             y[i + 1] = (y[i - 1] - (y[i] * q[i]));
-            cout << "=> "; r[i + 1].show(); cout << " = "; x[i + 1].show(); cout << " "; y[i + 1].show(); cout << endl;
+            cout << "=> "; r[i + 1].show(); cout << " = "; x[i + 1].show(); cout << "  |||||  "; y[i + 1].show(); cout << endl;
+            cout << endl << endl;
             r[i + 1].set_deg();
             ++i;
         }
