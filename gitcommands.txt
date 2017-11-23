@@ -12,4 +12,9 @@ MERGING
 $ git checkout master
 $ git merge hotfix
 
+$ git branch -d hotfix
+Deleted branch hotfix (3a0874c).
+
+
+
 
